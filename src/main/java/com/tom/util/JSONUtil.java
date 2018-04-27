@@ -12,8 +12,8 @@ public class JSONUtil {
 		this.json = new Gson();
 	}
 
-	public String getJSONForObject(Account account) {
-		return json.toJson(account);
+	public String getJSONForObject(Object Obj) {
+		return json.toJson(Obj);
 	}
 
 	public Account getObjectForJSON(String jSON) {

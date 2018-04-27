@@ -3,18 +3,20 @@ package com.tom.repository;
 import java.util.Collection;
 import java.util.List;
 
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import static javax.transaction.Transactional.TxType.REQUIRED;
+import static javax.transaction.Transactional.TxType.*;
 
 import com.tom.persistence.Account;
 import com.tom.util.JSONUtil;
 
-
+@Transactional(SUPPORTS)
+@Default
 public class AccountRepository implements IAccountRepository {
 	
 	@PersistenceContext(unitName="primary")
@@ -36,24 +38,28 @@ public class AccountRepository implements IAccountRepository {
 		}
 		
 	}
-
+	
+	@Override
 	private Account findAccount(Long id) {
 		return manager.find(Account.class, id);
 	}
 	
+	@Override
 	public String getAllAccounts() {
 		Query query = manager.createQuery("Select a FROM Account a");
 		Collection <Account> allaccounts = (Collection <Account>) query.getResultList();
 		return jUtil.getJSONForObject(allaccounts);
 	}
-
+	
+	@Override
 	@Transactional(REQUIRED)
 	public String addAccount(String jSON) {
 		Account newAccount = jUtil.getObjectForJSON(jSON);
 		manager.persist(newAccount);
 		return "{\"message\":\"Account Successfully Added\"}";
 	}
-
+	
+	@Override
 	@Transactional(REQUIRED)
 	public String updateAccount(Long id, String newJSON) {
 		Account old = findAccount(id);
@@ -70,6 +76,7 @@ public class AccountRepository implements IAccountRepository {
 		
 	}
 	
+	@Override
 	@Transactional(REQUIRED)
 	public String deleteAccount(Long id) {
 		

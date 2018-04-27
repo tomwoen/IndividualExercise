@@ -5,6 +5,15 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
+   <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.jboss.bom>10.1.0.Final</version.jboss.bom>
+        <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+        <version.war.plugin>3.0.0</version.war.plugin>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
+
    <dependencyManagement>
       <dependencies>
           <dependency>
@@ -16,8 +25,9 @@
           </dependency>
         </dependencies>
     </dependencyManagement>
-	<dependencies>
-    <dependency>
+
+    <dependencies>
+   <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
             <scope>provided</scope>
@@ -71,7 +81,6 @@
             <artifactId>hibernate-core</artifactId>
             <scope>provided</scope>
         </dependency>
-
              
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>
@@ -98,6 +107,28 @@
 		</dependency>
 
     </dependencies>
-  
-  
-</project>
+
+    <build>
+        <!-- Maven will append the version to the finalName (which is the
+            name given to the generated WAR, and hence the context root) -->
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.war.plugin}</version>
+                <configuration>
+                    <!-- Java EE doesn't require web.xml, Maven needs to
+                        catch up! -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <!-- The WildFly plug-in deploys your WAR to a local WildFly container -->
+            <!-- To use, run: mvn package wildfly:deploy -->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>${version.wildfly.maven.plugin}</version>
+            </plugin>
+        </plugins>
+    </build>
+    </project>

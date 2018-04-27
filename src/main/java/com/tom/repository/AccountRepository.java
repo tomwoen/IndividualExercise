@@ -25,7 +25,7 @@ public class AccountRepository implements IAccountRepository {
 	@Inject
 	private JSONUtil jUtil;
 	
-	
+	@Override
 	public String getAccount(Long id) {
 		Account getAccount = findAccount(id);
 		
@@ -39,7 +39,7 @@ public class AccountRepository implements IAccountRepository {
 		
 	}
 	
-	@Override
+	
 	private Account findAccount(Long id) {
 		return manager.find(Account.class, id);
 	}
@@ -54,7 +54,7 @@ public class AccountRepository implements IAccountRepository {
 	@Override
 	@Transactional(REQUIRED)
 	public String addAccount(String jSON) {
-		Account newAccount = jUtil.getObjectForJSON(jSON);
+		Account newAccount = jUtil.getObjectForJSON(jSON, Account.class);
 		manager.persist(newAccount);
 		return "{\"message\":\"Account Successfully Added\"}";
 	}
@@ -63,7 +63,7 @@ public class AccountRepository implements IAccountRepository {
 	@Transactional(REQUIRED)
 	public String updateAccount(Long id, String newJSON) {
 		Account old = findAccount(id);
-		Account update = jUtil.getObjectForJSON(newJSON);
+		Account update = jUtil.getObjectForJSON(newJSON, Account.class);
 		
 		if (old !=null) {
 			old = update;

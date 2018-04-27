@@ -16,8 +16,8 @@ public class JSONUtil {
 		return json.toJson(Obj);
 	}
 
-	public Account getObjectForJSON(String jSON) {
-		return json.fromJson(jSON, Account.class);
+	public <T> T getObjectForJSON(String jSON, Class<T> clazz) {
+		return json.fromJson(jSON, clazz);
 	}
 
 }

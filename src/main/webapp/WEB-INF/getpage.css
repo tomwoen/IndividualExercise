@@ -1,0 +1,30 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.links {
+    
+    overflow: hidden;
+    background-color: black;
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    
+}
+
+.links a {
+    
+    float: left;
+    color: azure;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}

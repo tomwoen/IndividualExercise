@@ -3,18 +3,28 @@
             <head>
                 <title>Account Page</title>
                 <link href="getpage.css" rel="stylesheet" type="text/css">
-                <script> src="json.js"</script>
+                <script src="js/main.js" type="text/javascript"> </script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                
+                 <meta charset="UTF-8">
             </head>
             <body>
                 
             <div class="links">
-                <a href="addpage.html" onclick="getJSON()">Add</a>
+                <a href="addpage.html">Add</a>
                 <a href="getpage.html">Get Accounts</a>
-            
-            </div>
+                          
             <div id="accounttable">
                 
-                <table style="width:100%">
+                </div>
+                
+                <div>
+                <ul id="accounts"></ul>
+                </div>
+                
+                
+                
+              <!-- <table id="table" style="width:100%">
                       <tr>
                         <th>Firstname</th>
                         <th>Lastname</th>
@@ -22,7 +32,7 @@
                         <th><button class="update" type="button" onclick="window.location.href='update.html'"> Update Account </button></th>
                           <th><button class="delete" type="button"> Delete Account </button></th>
                       </tr>
-            
+                </table>          -->       
              </div>
             </body>
     </html>

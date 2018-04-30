@@ -1,23 +1,23 @@
-function () {
+$(function () {
 
     var $accounts = $('#accounts');
 
     $.ajax({
-        url: 'localhost:8080/accountapp/api/accounts/json',
+        url: '/accountapp/api/accounts/json',
         type: 'GET',
         success: function (accounts) {
             console.log('success');
             $.each(accounts, function (i, account) {
 
-                $accounts.append('<li>ID; ' + account.ID + 'firstname: ' + account.firstName + 'lastname: ' + account.lastName + 'accountnumber' + account.accountNumber + '</li>');
+                $accounts.append('<li> ID: ' + account.ID + ' firstname: ' + account.firstName + ' lastname: ' + account.lastName + ' accountnumber: ' + account.accountNumber + '</li>');
 
             });
 
         },
         error: function () {
 
-            alert("Cannot loads")
+            alert("Cannot load data")
         }
 
     });
-};
+});

@@ -1,0 +1,75 @@
+input[type=text] {
+    
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: relative;
+    
+}
+
+
+.links {
+    
+    overflow: hidden;
+    background-color: black;
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    
+}
+
+.links a {
+    
+    float: left;
+    color: azure;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.acc {
+    
+     text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    
+    font-size: 17px;
+}
+
+#accounts {
+    
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 16px
+}
+
+#add-account, #update-account, #delete-account {
+    
+    background-color: cadetblue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+h1 {
+   font-family: "Verdana", Geneva, sans-serif;
+    
+}
+
+h2 {
+    font-family: "Verdana", Geneva, sans-serif;
+    
+}
+
+h3 {
+    
+    font-family: "Verdana", Geneva, sans-serif;
+}
